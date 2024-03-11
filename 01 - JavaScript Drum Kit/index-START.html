@@ -59,7 +59,25 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`) //We select the part of the html who has the selector audio[data-key] or "<audio data-key=x>"
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`) // The same as before but we select the visual parts to change the border color and those stuffs.
+    if(!audio) return // In this conditional we are telling to javascript that if the key doenst provide any data-key we exit the function.
+    audio.currentTime = 0 // at this part we set the audio timer to zero to click as many times as we want.
+    audio.play() //Its not dificult to understand this part xD, but ok, this is putted to play the audio
+    key.classList.add("playing") //In this part of the code we add the CSS selector ".playing" for it to transition when we press any key
+  }
+  function removeTransition(e){ //Okay, we are creating a function that returns the key to the initial state.
+    if(e.propertyName !== "transform") return
+    this.classList.remove("playing") 
+  }
+  const keys = document.querySelectorAll(".key") // In this part, we are creating a constant that provides all of the keys of the HTML that are named in the Class ".key".
+  //this is for us to change the property from transform to normal. 
+  keys.forEach(key => key.addEventListener("transitionend", removeTransition))
+  
+  
+  window.addEventListener("keydown",playSound) //We call the function "playSound" created before in another function of addEventListener
+  //This allows us to press the button and run the function 
 </script>
 
 
