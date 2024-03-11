@@ -65,7 +65,7 @@
     if(!audio) return // In this conditional we are telling to javascript that if the key doenst provide any data-key we exit the function.
     audio.currentTime = 0 // at this part we set the audio timer to zero to click as many times as we want.
     audio.play() //Its not dificult to understand this part xD, but ok, this is putted to play the audio
-    key.classList.add("playing") //In this part of the code we add the CSS selector ".playing" for it to transition when we press any key
+    key.classList.add("playing") //In this part of the code we add the CSS selector ".playing" for it to do the transition when we press any key
   }
   function removeTransition(e){ //Okay, we are creating a function that returns the key to the initial state.
     if(e.propertyName !== "transform") return
